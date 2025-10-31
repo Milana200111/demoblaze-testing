@@ -108,8 +108,14 @@ if __name__ == "__main__":
     print("Generated credentials using faker:")
     print(f"Username: {username}")
     print(f"Password: {password}")
-    category = input("\nEnter category name (e.g., Phones, Laptops, Monitors): ").strip().capitalize()
-    product_name = input("Enter product name (e.g., Samsung galaxy s6): ").strip()
+    category = input("\nEnter category name (Phones will be default): ").strip().capitalize()
+    product_name = input("Enter product name (Samsung galaxy s6 will be default): ").strip()
+
+    # Apply default values if input is empty
+    if not category:
+        category = "Phones"
+    if not product_name:
+        product_name = "Samsung galaxy s6"
     driver = webdriver.Chrome()
     wait = WebDriverWait(driver, 12)
     try:
